@@ -43,6 +43,7 @@ jobs:
           severity: "HIGH,CRITICAL"
           exit-code: 0
 
+
       - name: Trivy Artifact Scan (target/)
         uses: aquasecurity/trivy-action@0.20.0
         with:
