@@ -36,7 +36,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+      uses: actions/checkout@v4
 
       - name: Install Trivy
         uses: aquasecurity/setup-trivy@v0.4.0
@@ -62,8 +62,3 @@ jobs:
         with:
           config-path: ""
           fail: "true"
-
-        run: trivy fs --exit-code 0 --severity HIGH,CRITICAL .
-
-      - name: Build Artifact Scan
-
