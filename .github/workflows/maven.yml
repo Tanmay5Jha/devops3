@@ -28,7 +28,7 @@ jobs:
         run: mvn test
 
 
-    trivy-scan:
+  trivy-scan:
     runs-on: ubuntu-latest
     needs: build
 
@@ -44,7 +44,6 @@ jobs:
 
       - name: Trivy Artifact Scan (target/)
         run: trivy fs ./target --exit-code 1 --severity CRITICAL
-
 
 
   gitleaks-scan:
