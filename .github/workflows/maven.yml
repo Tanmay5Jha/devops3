@@ -36,16 +36,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install Trivy
-        uses: aquasecurity/trivy-action@0.20.0
-
       - name: Trivy FS Scan (Project Files)
-        run: |
-          trivy fs --exit-code 0 --severity HIGH,CRITICAL .
+        uses: aquasecurity/trivy-action@0.20.0
+        with:
+          scan-type: "fs"
+          severity: "HIGH,CRITICAL"
+          exit-code: 0
 
       - name: Trivy Artifact Scan (target/)
-        run: |
-          trivy fs ./target --exit-code 1 --severity CRITICAL
+        uses: aquasecurity/trivy-action@0.20.0
+        with:
+          scan-type: "fs"
+          scan-ref: "./target"
+          severity: "CRITICAL"
+          exit-code: 1
 
 
   gitleaks-scan:
